@@ -1,5 +1,6 @@
 import React , { Component }from "react";
 import { Media } from 'reactstrap';
+import Dish from "./DishComponent";
 import {Card, CardImg, CardImgOverlay, CardText, CardBody,CardTitle, CardLink} from "reactstrap";
 
 class Menu extends Component {
@@ -8,12 +9,13 @@ class Menu extends Component {
         this.state = {
             selectedDish: null
         };
+        console.log("menucomponent console is called ");
     }
     onDishSelect(dish){
         this.setState({ selectedDish: dish});
     }
-    renderAlert(dish){
-        alert(dish.name);
+    componentDidMount(){
+        console.log("menucomponent componentDidMount is called ");
     }
     renderDish(dish){
        if(dish != null){
@@ -23,7 +25,6 @@ class Menu extends Component {
                     <CardBody>
                     <CardTitle>{dish.name}</CardTitle> 
                     <CardText>{dish.description}</CardText>
-                    <CardLink href="#">Card Link</CardLink>
                     </CardBody>
                </Card>
            );
@@ -45,15 +46,16 @@ class Menu extends Component {
               </div>
             );
         });
-
+        console.log("menucomponent render is called ");
         return (
           <div className="container">
             <div className="row">
                   {menu}
             </div>
-            <div className = "row" onClick = {()=>this.renderAlert(this.state.selectedDish)}>
-               {this.renderDish(this.state.selectedDish)}
-            </div>
+           
+            <Dish dish = {this.state.selectedDish} dishList = {this.props.dishes}/>
+        
+           
           </div>
         );
     }
