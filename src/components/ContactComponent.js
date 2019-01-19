@@ -78,6 +78,22 @@ class Contact extends Component {
         console.log('Current State is: ' + JSON.stringify(this.state));
         alert('Current State is: ' + JSON.stringify(this.state));
         event.preventDefault();
+        this.setState({
+            firstname: '',
+            lastname: '',
+            telnum: '',
+            email: '',
+            agree: false,
+            contactType: 'Tel.',
+            message: '',
+            touched: {
+                firstname: false,
+                lastname : false,
+                email: false,
+                telnum: false
+            }
+        });
+
     }    
 
     render() {
