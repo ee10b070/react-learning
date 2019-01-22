@@ -25,7 +25,7 @@ class CommetForm extends Component{
 
       handleLogin(values) {
         this.toggleModal();
-        alert("current state is "+ JSON.stringify(values));
+        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
     
     }
 
